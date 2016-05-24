@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:titleTextColor="#ffffff"
+        >
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:id="@+id/lst_itemf"
+            android:tag="fragment_list"
+            class="com.example.david.entrega4.MyListFragment"
+
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/linearlayout">
+
+            <fragment
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/item_fragment"
+                android:tag="item_frag"
+                class="com.example.david.entrega4.ItemSelectedFragment"
+                android:layout_weight="1"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
