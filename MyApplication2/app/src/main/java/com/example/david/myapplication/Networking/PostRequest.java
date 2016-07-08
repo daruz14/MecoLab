@@ -40,7 +40,7 @@ public class PostRequest extends Request {
                 urlConnection.setDoInput(true);
                 urlConnection.setRequestProperty(CONTENT_TYPE, APPLICATION_JSON);
                 urlConnection.setRequestProperty(ACCEPT, APPLICATION_JSON);
-                //urlConnection.setRequestProperty(AUTHORIZATION, TOKEN_HEADER + token);
+                urlConnection.setRequestProperty(AUTHORIZATION, TOKEN_HEADER + token);
                 urlConnection.setRequestMethod(POST);
 
                 OutputStreamWriter wr= new OutputStreamWriter(urlConnection.getOutputStream());

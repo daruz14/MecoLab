@@ -1,6 +1,7 @@
 package com.example.david.myapplication.Fragments;
 
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.support.v4.app.Fragment;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -71,8 +72,9 @@ public class MyListFragment extends Fragment {
      */
     public void addStudent(Users student) {
         if (!studentInDb(student)) return;
-        addStudentToIndexedArray(student);
         addStudentToDb(student);
+        addStudentToIndexedArray(student);
+
     }
 
     /**
@@ -99,7 +101,7 @@ public class MyListFragment extends Fragment {
         values.put(UsersContract.UsersColumns.PHONE_NUMBER, student.getPhoneNumber());
 
         Uri newUri = getActivity().getContentResolver().insert(
-                UsersContract.USERS_URI,   // the user dictionary content URI
+                UsersContract.USERS_URIL,   // the user dictionary content URI
                 values                          // the values to insert
         );                                  // Valores
         return newUri != null;

@@ -11,7 +11,8 @@ public class UsersContract {
     public static final String AUTHORITY = "com.example.david.myapplication.provider";
     public static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
     public static final Uri USERS_URI = Uri.withAppendedPath(UsersContract.BASE_URI, "/users");//Revisar esta parte
-
+    public static final Uri USERS_URIL = Uri.withAppendedPath(UsersContract.BASE_URI, "/users1");
+    public static final Uri USERS_URIA = Uri.withAppendedPath(UsersContract.BASE_URI, "/users2");
     /**
      *  MIME Types
      *  Para listas se necesita  'vnd.android.cursor.dir/vnd.com.example.andres.provider.students'

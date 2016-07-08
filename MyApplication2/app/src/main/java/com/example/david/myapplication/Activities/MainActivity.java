@@ -79,7 +79,8 @@ public class MainActivity extends AppCompatActivity implements MyListFragment.On
         /*
          * Registra el obsever para students
          */
-        resolver.registerContentObserver(UsersContract.USERS_URI, true, observer);
+        //resolver.registerContentObserver(UsersContract.USERS_URI, true, observer);
+        resolver.registerContentObserver(UsersContract.USERS_URIL, true, observer);
         setContentView(R.layout.activity_main);
     }
 
@@ -113,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements MyListFragment.On
                 Bundle bundle = new Bundle();
                 bundle.putBoolean(ContentResolver.SYNC_EXTRAS_MANUAL, true);
                 bundle.putBoolean(ContentResolver.SYNC_EXTRAS_EXPEDITED, true);
-                ContentResolver.requestSync(mAccount, UsersContract.AUTHORITY, null);
+                ContentResolver.requestSync(mAccount, UsersContract.AUTHORITY, bundle);
             }
         }
     }

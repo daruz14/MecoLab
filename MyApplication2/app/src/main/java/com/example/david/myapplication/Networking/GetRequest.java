@@ -26,10 +26,10 @@ public class GetRequest extends Request {
 
         ArrayList<String> responses = new ArrayList<>();
         try {
-            url = new URL(API_URL);
+            url = new URL(API_URL+APPLICATION_JSON);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod(GET);
-            //urlConnection.setRequestProperty(AUTHORIZATION, TOKEN_HEADER + token);
+            urlConnection.setRequestProperty(AUTHORIZATION, TOKEN_HEADER + token);
             InputStream is;
 
             int responseCode = urlConnection.getResponseCode();

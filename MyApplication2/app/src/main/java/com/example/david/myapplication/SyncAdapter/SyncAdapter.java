@@ -81,7 +81,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         if (responses.size()>0){
             String response = responses.get(0);
             JSONArray jsonArray = new JSONArray(response);
-            Uri uri = UsersContract.USERS_URI;
+            Uri uri = UsersContract.USERS_URIA;
+            //Crear uri distinta para diferenciar del insert normal con el del get
             Cursor cursor = mContentResolver.query(UsersContract.USERS_URI,
                     null, null, null, null);
             ArrayList<String> students = new ArrayList<>();

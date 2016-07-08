@@ -18,6 +18,8 @@ import com.example.david.myapplication.Persistence.UsersDBHelper;
 public class UsersProvider extends ContentProvider {
     public static final int STUDENT_LIST = 1;
     public static final int STUDENT_ID = 2;
+    public static final int LOCAL = 3;
+    public static final int SERVIDOR = 4;
 
     private static final UriMatcher sUriMatcher;
 
@@ -37,6 +39,10 @@ public class UsersProvider extends ContentProvider {
          *  se devuelva un entero con el valor de 2.
          */
         sUriMatcher.addURI(UsersContract.AUTHORITY, "users/#", STUDENT_ID);
+
+        sUriMatcher.addURI(UsersContract.AUTHORITY, "users1", LOCAL);
+
+        sUriMatcher.addURI(UsersContract.AUTHORITY, "users2", SERVIDOR);
     }
 
     /**
@@ -94,10 +100,25 @@ public class UsersProvider extends ContentProvider {
      */
     @Override
     public Uri insert(Uri uri, ContentValues values) {
+        //Falta hacer un uri matcher para saber si es un insert del servidor o un insert de la aplicacion
+        //Si es del servidor hacer contentResolver.noteyChange(uri,null,false)
+        //y para el de aplicacion sea true
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
-        db.insert(DatabaseContract.Usarios.TABLE_NAME, null, values);
+        switch (sUriMatcher.match(uri)){
+            case LOCAL:
+                db.insert(DatabaseContract.Usarios.TABLE_NAME, null, values);
+                getContext().getContentResolver().notifyChange(UsersContract.USERS_URIL, null, false);
+                break;
+            case SERVIDOR:
+                db.insert(DatabaseContract.Usarios.TABLE_NAME, null, values);
+                getContext().getContentResolver().notifyChange(UsersContract.USERS_URI, null, true);
+                break;
+            default:
+                break;
+        }
         // Le avisa a los observadores
-        getContext().getContentResolver().notifyChange(uri, null);
+        //Igual se deja este ultimo notifyChange
+        getContext().getContentResolver().notifyChange(UsersContract.USERS_URI, null);
         return null;
     }
 
