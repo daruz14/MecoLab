@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cachipun</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header class="layout"><%= link_to 'Juego de Ca-chi-pún', root_path %></header>
+  <main>
+    <%= yield %>
+  </main>
+
+</body>
+</html>

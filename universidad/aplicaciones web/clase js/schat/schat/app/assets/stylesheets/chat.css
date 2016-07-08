@@ -1,0 +1,71 @@
+.chat-container {
+  width: 400px;
+  box-shadow: 1px 0 2px black;
+}
+
+.chat-container blockquote {
+  display: block;
+  width: 70%;
+  margin: 5px;
+  padding: 6px 8px 3px;
+  background: #a4edfa;
+  border-radius: 3px;
+}
+
+.chat-container blockquote p {
+  margin: 0;
+}
+.chat-container blockquote footer:after {
+  display: block;
+  content: ' ';
+  clear: both;
+}
+
+.chat-container blockquote footer .author {
+  display: block;
+  float: left;
+  font-size: 10px;
+}
+
+.chat-container blockquote footer .date {
+  display: block;
+  float: right;
+  font-size: 10px;
+}
+
+.chat-container blockquote.me {
+  margin-left: 97px;
+  background-color: #a3fabd;
+}
+.chat-container blockquote.me footer .author {
+  display: none;
+}
+
+.chat-container .send-message {
+  width: 100%;
+  border: 1px solid #aaa;
+}
+.chat-container .send-message:after {
+  display: block;
+  content: ' ';
+  clear: both;
+}
+
+.chat-container .send-message .message {
+  display: block;
+  float: left;
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  padding: 3px 5px;
+  width: 90%; /* backward compatibility */
+  width: calc(100% - 30px);
+  height: 22px;
+}
+.chat-container .send-message button {
+  display: block;
+  float: right;
+  box-sizing: border-box;
+  width: 28px;
+  height: 22px;
+}

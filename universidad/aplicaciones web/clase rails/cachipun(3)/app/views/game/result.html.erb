@@ -1,0 +1,7 @@
+<h1>Resultados</h1>
+<p>Veamos <strong><%= @name %></strong>: </p>
+<p>Sacaste <strong><%= cachipun_print(@user_result) %></strong></p>
+<p>CPU saca <strong><%= cachipun_print(@cpu_result) %></strong></p>
+<p>El resultado es: <strong><%= cachipun_print_result(@game_result, @name, "CPU") %></strong></p>
+
+<p><%= link_to("Jugar nuevamente", game_start_path ) %></p>

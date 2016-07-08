@@ -1,0 +1,10 @@
+.carousel .item{
+  display: inline-block;
+  min-height: 100px;
+  min-width: 100px;
+  border: 1px solid lime;
+}
+
+.carousel .item.hide{
+  display: none;
+}

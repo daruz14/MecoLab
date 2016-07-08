@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font: 14px sans-serif;
+  color: #333;
+  background: #ccc;
+}
+
+.layout-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #fff;
+}
+
+.flash {
+  display: block;
+  border: 1px solid rgba(0,0,0,0.7);
+  background: #ddd;
+  margin: 10px;
+  padding: 7px 15px;
+  border-radius: 6px;
+}
+
+.flash.notice {
+  background-color: #87cefa;
+  color: #274683;
+  border-color: #274683;
+}
+
+.flash.alert {
+  background-color: mistyrose;
+  color: #730E15;
+  border-color: #730E15;
+}
+
+.user-bar {
+  position: absolute;
+  background: rgba(255,255,255,0.7);
+  top: 0;
+  right: 0;
+  padding: 4px 9px;
+}
+
+.layout-container > footer {
+  font-size: 12px;
+  color: #888;
+  text-align: center;
+}

@@ -1,0 +1,11 @@
+<div id="game_ask">
+  <h1>Bienvenido</h1>
+  <p>Para continuar por favor ingresa tu nombre</p>
+  <% if @error.present? %>
+    <div class="error-message"><%= @error %></div>
+  <% end %>
+  <%= form_tag(name_remember_path, method: :get) do %>
+    <%= text_field_tag(:user_name, nil, placeholder: "Ask Ketchup") %>
+    <%= submit_tag("Enviar") %>
+  <% end %>
+</div>

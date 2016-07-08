@@ -1,0 +1,19 @@
+
+
+
+.inb{
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-color: black;
+  border-width: thin;
+}
+.submit{
+  background-color:#0A1DF2;
+  padding: 0;
+  border-color: blue;
+  border-width: thin;
+  height: 30px;
+  width: 200px;
+  text-align: center;
+}

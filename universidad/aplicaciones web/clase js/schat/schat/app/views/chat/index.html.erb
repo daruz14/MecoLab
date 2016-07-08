@@ -1,0 +1,31 @@
+<h1>Welcome <%= current_user %> to this chat</h1>
+<div class="chat-container">
+  <!-- sample content -->
+  <blockquote>
+    <p>Hola!</p>
+    <footer>
+      <span class="author">Mr. Thompsom</span>
+      <span class="date">2016-05-21 09:54:43</span>
+    </footer>
+  </blockquote>
+  <blockquote>
+    <p>Hay alguien aquí?</p>
+    <footer>
+      <span class="author">Mr. Thompsom</span>
+      <span class="date">2016-05-21 09:54:49</span>
+    </footer>
+  </blockquote>
+  <blockquote class="me">
+    <p>Hola. Si, estoy yo!</p>
+    <footer>
+      <span class="author">El Barto</span>
+      <span class="date">2016-05-21 09:56:11</span>
+    </footer>
+  </blockquote>
+
+  <!-- aqui faltaria algo para poder enviar mensajes -->
+  <form class="send-message">
+    <input type="text" class="message" />
+    <button type="button">&gt;</button>
+  </form>
+</div>

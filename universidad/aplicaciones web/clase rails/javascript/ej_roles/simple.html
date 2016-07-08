@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Nada especial</title>
+  <style>
+    .menu a {
+      font-family: sans-serif;
+      font-size: 12px;
+      display: block;
+      border: 1px solid black;
+      width: 100px;
+      height: 15px;
+      margin-top: 2px;
+    }
+    .menu .menu {
+      margin-left: 104px;
+      position: relative;
+      /*top: -19px; */
+    }
+  </style>
+</head>
+<body>
+
+  <header class="layout">
+    <nav class="logo">
+      <a href="#home">
+        <img src="imagen.png" alt="logo" title="logo" />
+      </a>
+    </nav>
+    <nav id="user-bar">
+      <form action="#login-form" method="post" id="login-form" class="login-form">
+        <div class="form-group">
+          <label for="login-username">Usuario</label>
+          <input type="text" class="login-input" id="login-username" name="username" placeholder="user@example.com" />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Clave</label>
+          <input type="password" class="login-input" id="login-password" name="password" required />
+        </div>
+        <input type="submit" value="Ingresar" />
+      </form>
+      <a href="#forgot" class="user-link">Olvidé mi clave</a>
+      <a href="#new" id="register-link" class="user-link">Registro</a>
+    </nav>
+    <nav id="main-menu" class="menu">
+      <a href="#">Menu 1</a>
+      <a href="#">Menu 2</a>
+      <a href="#" class="active">Menu 3</a>
+      <a href="#" class="dropdown" data-target="#submenu-4">Menu 4</a>
+      <nav id="submenu-4" class="dropdown menu">
+        <a href="#">Submenu 4.1</a>
+        <a href="#">Submenu 4.2</a>
+        <a href="#" class="dropdown" data-target="#submenu-4-sub-3">Submenu 4.3</a>
+        <nav id="submenu-4-sub-3" class="dropdown menu">
+          <a href="#">Submenu 4.3.1</a>
+          <a href="#">Submenu 4.3.2</a>
+          <a href="#">Submenu 4.3.3</a>
+        </nav>
+        <a href="#">Submenu 4.4</a>
+      </nav>
+      <a id="menu-5" href="#" class="dropdown" data-target="#submenu-5">Menu 5</a>
+      <nav id="submenu-5" class="dropdown menu">
+        <a href="#">Submenu 5.1</a>
+        <a href="#">Submenu 5.2</a>
+        <a href="#">Submenu 5.3</a>
+      </nav>
+      <a href="#">Menu 6</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Manipulación de menús</h1>
+    <nav class="tabs">
+      <a href="#add-menu" class="active" data-target="#tab-add-menu">Agregar menú</a>
+      <a href="#add-dropdown-menu" data-target="#tab-add-dropdown-menu">Agregar dropdown</a>
+      <a href="#remove-menu" data-target="#tab-remove-menu">Quitar menú</a>
+    </nav>
+    <div id="tab-add-menu" class="tab-content active">
+      <h2>Agregar un nuevo menú</h2>
+      <form id="add-menu-form" action="#add-menu" method="get">
+        <div class="form-group">
+          <label for="add-menu-text">Etiqueta del menú</label>
+          <input type="text" id="add-menu-text" placeholder="Menú X" />
+        </div>
+        <div class="form-group">
+          <label for="add-on-dropdown-menu">En el dropdown</label>
+          <select id="add-on-dropdown-menu">
+            <option value="#main-menu" selected>En el menú principal</option>
+            <option value="#submenu-4">Menu 4</option>
+            <option value="#submenu-4-sub-3">Submenu 4.3</option>
+            <option value="#submenu-5">Menu 5</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="add-before-menu">Después de</label>
+          <select id="add-before-menu">
+            <option value="0">Al principio</option>
+            <option value="1">Menu 1</option>
+            <option value="2">Menu 2</option>
+            <option value="3">Menu 3</option>
+            <option value="4">Menu 4</option>
+            <option value="5">Menu 5</option>
+            <option value="6">Menu 6</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button type="submit">Agregar</button>
+        </div>
+      </form>
+    </div>
+    <div id="tab-add-dropdown-menu" class="tab-content">
+      <h2 id="title-2">Agregar un nuevo menú desplegable (dropdown)</h2>
+    </div>
+    <div id="tab-remove-menu" class="tab-content">
+      <h2>Quitar un menú</h2>
+      <form action="#remove">
+        <div class="form-group">
+          <label><input type="checkbox" id="acept-remove" checked>Estoy de acuerdo con eliminar un elemento</label>
+        </div>
+        <div class="form-group radio">
+          <label for="why-remove">¿Por qué quieres eliminarlo?</label>
+          <div class="radio-element">
+            <input type="radio" id="why-remove" name="why-remove" value="bad-luck"> Me trae mala suerte
+          </div>
+          <div class="radio-element">
+            <input type="radio" name="why-remove" value="dont-like"> No me agrada
+          </div>
+          <div class="radio-element">
+            <input type="radio" name="why-remove" value="discrimination"> Nada personal, sólo lo estoy discriminando
+          </div>
+          <div class="radio-element">
+            <input type="radio" name="why-remove" value="personal"> Otro (algo personal)
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </main>
+
+</body>
+</html>

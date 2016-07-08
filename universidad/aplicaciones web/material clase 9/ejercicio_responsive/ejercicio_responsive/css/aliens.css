@@ -1,0 +1,135 @@
+html {
+  /* esto hace que siempre este toda la altura disponible */
+  height: 100%;
+}
+body {
+  /* de altura 100% */
+  height: 100%;
+}
+
+/* algunos estilos basicos */
+body {
+  margin: 0;
+  background: #ddd;
+  font-size: 14px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+main {
+  background: #fff;
+  min-height: 100%;
+  margin: 0 auto;
+}
+
+
+a {
+  color: green;
+  text-decoration: none;
+}
+a:hover {
+  color: #fc3;
+  text-decoration: underline;
+}
+.main-header a {
+  display: block;
+}
+.main-header a:hover {
+  text-decoration: none;
+}
+.main-header .logo a {
+  height: 60px;
+  /* aqui podria ir una imagen de fondo, y hacer el texto transparente (para que no se vea) */
+  background: #cca;
+  color: #883;
+  font-family: fantasy;
+  font-size: 30px;
+  line-height: 60px;
+  text-align: center;
+}
+.main-header .banner {
+  display: none;
+}
+
+.main-header .menu a  {
+  float: left;
+  width: 238px;
+  width: calc(50% - 2px);
+  height: 50px;
+  border: 1px solid #269;
+  font-size: 16px;
+  line-height: 50px;
+  text-align: center;
+  background: #38f;
+  color: #ff0;
+}
+.main-header .menu a:hover {
+  background: #67a;
+  text-decoration: none;
+}
+.main-header .menu a.current {
+  background: #85f;
+}
+.main-header .menu:after {
+  display: table;
+  content: ' ';
+  clear: both;
+}
+
+
+h1 {
+  color: #60e;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+  border-bottom: 1px solid #60e;
+}
+h2 {
+  font-size: 16px;
+  padding-left: 10px;
+}
+h3 {
+  font-size: 14px;
+}
+p {
+  padding: 5px;
+}
+p strong {
+  font-weight: 600;
+  font-size: 120%;
+}
+p em {
+  color: #daf;
+}
+.resume {
+  font-size: 16px;
+}
+.resume-image {
+  display: none;
+}
+
+
+nav.subsections a {
+  display: block;
+  padding: 7px;
+  text-align: center;
+  margin: 5px 0;
+  background: #daf;
+  color: #800;
+  text-decoration: none;
+}
+
+nav.subsections a:hover {
+  background: #ffc;
+}
+
+footer.main-footer {
+  border-top: 1px solid #ddd;
+  padding-top: 3px;
+  font-size: 11px;
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 10px;
+}

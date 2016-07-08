@@ -1,0 +1,17 @@
+<h1>Ca-chi-pún</h1>
+<p>Hola <strong><%= @name %></strong>, elige, piedra, papel o tijera </p>
+<%= form_tag(game_result_path, method: :get) do %>
+  
+  <%= hidden_field_tag(:user_name,@name)%>
+  
+  <%= radio_button_tag(:user_action, 1) %>
+  <%= label_tag(:user_action_1, "Piedra") %>
+
+  <%= radio_button_tag(:user_action, 2) %>
+  <%= label_tag(:user_action_2, "Papel") %>
+
+  <%= radio_button_tag(:user_action, 3) %>
+  <%= label_tag(:user_action_3, "Tijera") %>
+  
+  <%= submit_tag("Enviar") %>
+<% end %>

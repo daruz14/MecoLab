@@ -1,0 +1,45 @@
+#cards_index a:hover {
+    background: none;
+}
+#cards_index a img {
+    border: 2px solid #00f;
+    border-radius: 13px;
+}
+
+#cards_index a:hover img {
+    border-color: #0f0;
+}
+
+#cards_index .card-info {
+  box-shadow: 0px 2px 3px 1px rgba(0,0,0,0.3);
+  width: 70%;
+  margin: 10px auto 20px;
+  padding: 8px 15px;
+
+}
+
+#cards_index .card-info h1 {
+  font-size: 100%;
+}
+
+#cards_index .card-info a {
+  color: #00f;
+}
+#cards_index .card-info a:hover {
+  color: #0f0;
+  text-decoration: underline;
+}
+
+#cards_show section.image {
+  float: left;
+  width: 250px;
+}
+#cards_show section.data {
+  float: left;
+  width: 450px;
+}
+#cards_show section.page-end {
+  clear: both;
+  padding-top: 10px;
+  border-top: 1px solid #888;
+}

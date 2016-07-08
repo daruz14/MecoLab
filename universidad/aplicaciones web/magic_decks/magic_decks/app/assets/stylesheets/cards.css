@@ -1,0 +1,13 @@
+#cards_show section.image {
+  float: left;
+  width: 250px;
+}
+#cards_show section.data {
+  float: left;
+  width: 450px;
+}
+#cards_show section.page-end {
+  clear: both;
+  padding-top: 10px;
+  border-top: 1px solid #888;
+}

@@ -1,0 +1,20 @@
+<h1>Cartas</h1>
+
+<p>
+  <!--<% @cards.each do |card| %>
+    <span>
+      <%= card.name %>
+      esto nos imprime todos los nombres
+      <img src="<%=card.image_url%>">
+      con esto imprimo la imagen de cada carta
+    </span>
+  <% end %>-->
+  <% @cards.each do |card| %>
+    <%= link_to card_path(card) do %>
+      <%= image_tag(card.image_url) %>
+    <% end -%>
+  <%end%>
+  <!-- esto hace lo mismo que antes estaba comentado-->
+
+  Hay <%= @cards.length %> cartas
+</p>

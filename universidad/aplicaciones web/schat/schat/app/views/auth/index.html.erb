@@ -1,0 +1,13 @@
+<h1>Welcome</h1>
+
+<%= form_tag(auth_login_path) do %>
+  <div>
+    <%=label_tag('name') do %>
+      Name:
+      <%= text_field_tag('name', nil, placeholder: 'your name') %>
+    <% end %>
+  </div>
+  <div>
+    <%= submit_tag('Enter') %>
+  </div>
+<% end %>

@@ -1,0 +1,13 @@
+<div id="cards_index">
+  <h1>Cartas</h1>
+
+  <div class="cards">
+    <% @cards.each do |card| %>
+      <a href="#" data-card-source-url="<%=card_path(card, format: 'json')%>" ><%= tag('img', src: card.image_url) %></a>
+    <% end %>
+  </div>
+
+  <p>
+    Hay <%= @cards.length %> cartas
+  </p>
+</div>

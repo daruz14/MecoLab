@@ -1,0 +1,12 @@
+#game_ask input {
+  display: inline-block;
+}
+
+#game_ask input[type=text] {
+  width: 200px;
+  height: 24px;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 2px 5px;
+  font-family: fantasy;
+}

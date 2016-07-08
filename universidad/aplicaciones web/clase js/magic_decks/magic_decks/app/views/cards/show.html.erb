@@ -1,0 +1,28 @@
+<div id="cards_show">
+  <h1><%=@card.name %></h1>
+  <section class="image">
+    <%= image_tag(@card.image_url) %>
+  </section>
+  <section class="data">
+    <dl>
+      <dt>Nombre de la carta</dt>
+      <dd><%= @card.name %></dd>
+      
+      <dt>Costo de maná</dt>
+      <dd><%= mana_cost_to_images(@card.mana_cost).html_safe %></dd>
+      
+      <dt>Maná convertido</dt>
+      <dd><%= @card.converted_cost %></dd>
+      
+      <dt>Texto de la carta</dt>
+      <dd><%= @card.oracle_text %></dd>
+      
+      <dt>Artista</dt>
+      <dd><%= @card.artist %></dd>
+    </dl>
+  </section>
+
+  <section class="page-end">
+    <%= link_to 'Volver', cards_path %>
+  </section>
+</div>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body { margin: 0; background: #ddd; font-family: sans-serif; font-size: 14px; }
+    main { width: 300px; background: #fff; margin: 0 auto; padding: 20px; box-shadow: 0 0 2px rgba(0,0,0,0.4);}
+    .error {
+      padding: 5px 15px;
+      background: #ffb5b7;
+      color: #800;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <form action="#login" method="post">
+      <h1>Ingreso al sistema</h1>
+      <div class="form-field">
+        <label for="user">Usuario</label>
+        <input type="text" id="user" name="user" placeholder="email@example.com" />
+      </div>
+      <div class="form-field">
+        <label for="pass">Clave</label>
+        <input type="password" id="pass" name="pass"/>
+      </div>
+      <div class="form-field">
+        <label><input type="checkbox" name="remember"> Recordar usuario</label>
+      </div>
+      <div class="form-field">
+        <input type="submit" value="Ingresar" />
+      </div>
+    </form>
+    <nav class="user-helps">
+      <a href="#recover">¿Olvidaste tu contraseña?</a>
+      <a href="#unlock">Solicitar desbloqueo de cuenta</a>
+    </nav>
+  </main>
+</body>
+</html>

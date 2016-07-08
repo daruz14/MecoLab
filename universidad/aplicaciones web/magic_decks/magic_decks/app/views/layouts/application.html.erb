@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MagicDecks</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header class="mainHeader">
+      <nav>
+        <!-- esto hace que se creen link con las palabras y donde va root_url se pone el link a donde ir-->
+        <%= link_to "Todas las cartas", root_url %>
+        <%= link_to "Comunes", root_url(r: 1) %>
+        <%= link_to "Infrecuentes", root_url(r: 2) %>
+        <%= link_to "Raras", root_url(r: 3) %>
+        <%= link_to "Míticas", root_url(r: 4) %>
+      </nav>
+    </header>
+  <main>
+    <%= yield %>
+  </main>
+  </body>
+</html>

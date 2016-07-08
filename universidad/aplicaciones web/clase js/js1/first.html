@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mi primer JavaScript</title>
+  <style type="text/css">
+    body {background: #fff; font-size: 14px; font-family: sans-serif; }
+    section.calc { display: block; width: 320px; background: #999; margin: 15px auto; border: 3px solid #555;
+      border-radius: 14px; box-shadow: 1px 1px 2px rgba(0,0,0,0.3); padding: 15px;}
+    .calc #calc-screen { min-height: 30px; background: rgba(200,170,230,0.4); margin: 10px; border: 1px solid #859;
+      font-family: "Monaco", "Consolas", monospace; font-size: 30px; text-align: right; padding: 10px 15px;
+      color: #324; overflow-x: auto;}
+    .calc .buttons:after { display: block; content: ' '; clear: both; }
+    .calc button.btn { display: block; float: left; background: #eee; width: 60px; height: 60px; margin: 10px;
+      border: 2px solid black; border-radius: 10px; font-size: 22px; font-weight: 700; cursor: pointer; }
+    .calc button.clr { background: #e66; color: #fff; }
+    .calc button.eq { background: #e66; color: #fff; }
+    .calc button.btn:active { border-color: #00f; color: #00f; }
+  </style>
+</head>
+<body>
+  <h1>Pagina de ejemplo para JavaScript</h1>
+  <section class="calc">
+    <header id="calc-screen">0</header>
+    <div class="buttons">
+
+      <button type="button" class="btn num" value="7">7</button>
+      <button type="button" class="btn num" value="8">8</button>
+      <button type="button" class="btn num" value="9">9</button>
+      <button type="button" class="btn" value="/">/</button>
+
+      <button type="button" class="btn num" value="4">4</button>
+      <button type="button" class="btn num" value="5">5</button>
+      <button type="button" class="btn num" value="6">6</button>
+      <button type="button" class="btn" value="X">X</button>
+
+      <button type="button" class="btn num" value="1">1</button>
+      <button type="button" class="btn num" value="2">2</button>
+      <button type="button" class="btn num" value="3">3</button>
+      <button type="button" class="btn" value="-">-</button>
+
+      <button type="button" class="btn num" value="0">0</button>
+      <button type="button" class="btn clr" value="C">C</button>
+      <button type="button" class="btn eq" value="=">=</button>
+      <button type="button" class="btn" value="+">+</button>
+
+    </div>
+  </section>
+  <script type="text/javascript">
+    //<!--
+
+    function captureButtonClick(event) {
+      console.log(event);
+      var button = event.target;
+      if (button.classList.contains('num')) {
+        // es un numero
+        var screen = document.getElementById('calc-screen');
+        var currentValue = screen.innerHTML;
+        var buttonValue = button.value;
+        if (currentValue == "0") {
+          currentValue = "";
+        }
+        var newValue = currentValue + buttonValue;
+        screen.innerHTML = newValue ;
+      }
+    }
+    var buttons = document.getElementsByClassName('btn');
+    var button;
+    for (var i=0; i < buttons.length; i++) {
+      button = buttons[i];
+      button.addEventListener('click', captureButtonClick, true);
+    }
+    //-->
+  </script>
+  <section class="simple_samples">
+    <h2>Ejemplos simples -- NUNCA HACER ESTO</h2>
+    <p><a href="javascript:alert('esta es una alerta')">Haga clic aqui para una alerta</a> </p>
+    <p><a href="javascript:if (confirm('quieres ir a google?')){ location.href='https://www.google.cl'}">Ir a google (con confirmación)</a></p>
+    <p><a href="javascript:history.go(-1)">Volver a la página anterior</a></p>
+  </section>
+</body>
+</html>
