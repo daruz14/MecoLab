@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "917713447664",
+    "firebase_url": "https://wspuc-ed2e2.firebaseio.com",
+    "project_id": "wspuc-ed2e2",
+    "storage_bucket": "wspuc-ed2e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917713447664:android:1c1614186a937191",
+        "android_client_info": {
+          "package_name": "com.example.david.applicationconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917713447664-dn4qd58862k8mqf7aj0952pomk371j6g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZdMepUBz2GS-TWOF0Fvp5phMMQG--w70"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,11 +12,17 @@ class Api::V1::ContactosController < ApplicationController
 
     # POST /users.json
     def create
+      # Ahora al crear un nuevo contacto se revisa si ya existe, en dicho caso se retorna su id correspondiente
+      # Este id sera utilizado como token para las conversaciones
+      # Si el contacto no existe se crea y se retorna el id correspondiente para luego ser usado
+      if Contacto.exists?(contact_params)
+        return render json: Contacto.where(contact_params).first.id
+      end
       @contacto = Contacto.new(contact_params)
       if @contacto.save
-        render json: @contacto, status: 201
+        render json: @contacto.id, status: 201
       else
-        render json: { message: 'Falló creacion', product: product, params: product_params }, status: 500
+        render json: { message: 'Falló creacion del contacto', params: contact_params }, status: 500
       end
     end
 
@@ -36,7 +42,7 @@ class Api::V1::ContactosController < ApplicationController
     end
 
     def contact_params
-      params.require(:contacto).permit(:Nombre, :Apellido, :Telefono)
+      params.permit(:Nombre, :Apellido, :Telefono)
     end
 
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :messages
   resources :contactos
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,11 +9,13 @@ Rails.application.routes.draw do
    root 'contactos#index'
    post 'contactos/new' => 'contactos#new'
 
+
    # API
 namespace :api do
     namespace :v1 do
         resources :contactos, only: [:index, :show, :update, :destroy, :create]
         resources :messages, only: [:index, :show, :update, :destroy, :create]
+        resources :users, only: [:index, :show, :update, :destroy, :create]
     end
 end
   # Example of regular route:

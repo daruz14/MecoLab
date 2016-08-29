@@ -13,8 +13,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.example.david.applicationconnect.Adapters.MessageAdapter;
+import com.example.david.applicationconnect.Models.Message;
+import com.example.david.applicationconnect.Models.User;
+import com.example.david.applicationconnect.Networking.Request;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,47 +40,72 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String URL_TO_DOWNLOAD = "http://10.203.10.71:3000/contactos.json";
-    List<String> datos;
-    ArrayAdapter<String> adapter;
-    TextView txt_datos;
+    List<Message> datos;
+    MessageAdapter adapter;
     ListView lsita_datos;
+    String mPost = "POST";
+    String mGet = "GET";
+
+    public static Intent getIntent(Context contexto, User paquete2){
+        Intent intent = new Intent(contexto, MainActivity.class);
+        intent.putExtra(User.KEY_PAQUETE, paquete2);//con esto pasamos datos
+        return intent;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button descargar = (Button)findViewById(R.id.button);
-        txt_datos= (TextView)findViewById(R.id.txt);
-        lsita_datos = (ListView)findViewById(R.id.list);
+        Button descargar = (Button) findViewById(R.id.btn_sync);
+        Button subir = (Button) findViewById(R.id.btn_send);
 
-        descargar.setOnClickListener(new View.OnClickListener(){
+        lsita_datos = (ListView) findViewById(R.id.list);
+        final User usuario = getIntent().getParcelableExtra(User.KEY_PAQUETE);
+        Actualizar(usuario);
+        descargar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                Actualizar(usuario);
 
-                //JsonTask asd =new JsonTask();
-                //asd.setmContext(MainActivity.this);
-                new JsonTask().execute(URL_TO_DOWNLOAD);
-                //datos = getIntent().getStringArrayListExtra("lista");
-                //adapter.notifyDataSetChanged();
-                //lista_datos.setAdapter(adapter);
 
+            }
+        });
+
+        subir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText texto = (EditText)findViewById(R.id.editText);
+                Message mensaje = new Message("David","",texto.getText().toString(),usuario.getFirstName());
+
+                new JsonPost().execute(mensaje);
+                texto.setText("");
             }
         });
     }
 
+    public void Actualizar(User usuario){
+
+        ArrayList<String>lista = new ArrayList<String>();
+        lista.add(mGet);
+        lista.add(usuario.getFirstName());
+        new JsonTask().execute(lista);
+    }
+
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+    // Inflate the menu; this adds items to the action bar if it is present.
 //        getMenuInflater().inflate(R.menu.menu_main, menu);
 //        return true;
 //    }
 
 //    @Override
 //    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+    // Handle action bar item clicks here. The action bar will
+    // automatically handle clicks on the Home/Up button, so long
+    // as you specify a parent activity in AndroidManifest.xml.
 //        int id = item.getItemId();
 
 //        //noinspection SimplifiableIfStatement
@@ -86,44 +117,44 @@ public class MainActivity extends AppCompatActivity {
     //}
 
 
-
-    public class JsonTask extends AsyncTask<String,String,List<String>> {
-
-
+    public class JsonTask extends AsyncTask<ArrayList<String>, String, List<Message>> {
 
 
         @Override
-        protected List<String> doInBackground(String... params) {
+        protected List<Message> doInBackground(ArrayList<String>... params) {
             HttpURLConnection connection = null;
             BufferedReader reader = null;
 
             ArrayList<String> responses = new ArrayList<>();
+
             try {
-                URL url = new URL(params[0]);
-                connection = (HttpURLConnection) url.openConnection();
-                connection.connect();
-                InputStream stream = connection.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(stream));
-                String response = "";
-                String line;
-                while ((line = reader.readLine()) != null) {
-
-                    response += line + "\n";
-                }
-                responses.add(response);
-                String response2 = responses.get(0);
-                JSONArray jsonArray = new JSONArray(response2);
-
-                List<String> movieModelList = new ArrayList<>();
-                for(int i=0; i<jsonArray.length(); i++) {
+                Request request;
+                List<Message> movieModelList = new ArrayList<>();
+                request = Request.createRequest(params[0].get(0));
+                Message mensajeGet = new Message("","","messages", "");
+                ArrayList<String> results = request.perform(mensajeGet);
+                String response = results.get(0);
+                String nombre = params[0].get(1);
+                JSONArray jsonArray = new JSONArray(response);
+                for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject finalObject = jsonArray.getJSONObject(i);
+                    String from = finalObject.getString("from");
+                    String text = finalObject.getString("text");
+                    String to = finalObject.getString("to");
+                    String date = finalObject.getString("created_at");
+                    if ((to.equals("David") && from.equals(nombre))||(to.equals(nombre) && from.equals("David"))) {
+                        Message mensaje = new Message(from, date, text, to);
 
-                    String name = finalObject.getString("Nombre");
-                    String year = finalObject.getString("Telefono");
-                    String movieModel = name + " -  " + year;
-//
-                    movieModelList.add(name);
+                        movieModelList.add(mensaje);
+                    }
+
                 }
+                if (movieModelList.size()== 0){
+                    Message mensaje = new Message("Servidor"," " ,"No hay textos de conversacion", " ");
+
+                    movieModelList.add(mensaje);
+                }
+
                 return movieModelList;
 
             } catch (MalformedURLException e) {
@@ -133,32 +164,51 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             } finally {
-                if(connection != null) {
+                if (connection != null) {
                     connection.disconnect();
                 }
                 try {
-                    if(reader != null) {
+                    if (reader != null) {
                         reader.close();
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            return  null;
+            return null;
         }
 
         @Override
-        protected void onPostExecute(List<String> strings) {
-            super.onPostExecute(strings);
-            if (strings!=null){
-            txt_datos.setText(strings.get(0));}
-            else {txt_datos.setText("estaba vacio esta cosa");}
-            datos = strings;
-            adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, datos);
+        protected void onPostExecute(List<Message> messages) {
+            super.onPostExecute(messages);
+
+            datos = messages;
+            adapter = new MessageAdapter(MainActivity.this, android.R.layout.simple_list_item_1, datos);
             lsita_datos.setAdapter(adapter);
 
 
         }
 
+    }
+
+    public class JsonPost extends AsyncTask<Message, String, List<Message>> {
+
+        @Override
+        protected List<Message> doInBackground(Message... params) {
+
+            List<Message> movieModelList = new ArrayList<>();
+            Request request = Request.createRequest("POST");
+            try {
+                ArrayList<String> results = request.perform(params[0]);
+                Message mensaje = new Message("Yo", "Hoy", "Mandaste el texto", "");
+//
+                movieModelList.add(mensaje);
+                return movieModelList;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
     }
 }

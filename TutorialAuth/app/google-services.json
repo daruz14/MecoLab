@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1080703709055",
+    "firebase_url": "https://tutorialauth-73c94.firebaseio.com",
+    "project_id": "tutorialauth-73c94",
+    "storage_bucket": "tutorialauth-73c94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080703709055:android:4b53969874ac5ece",
+        "android_client_info": {
+          "package_name": "com.example.daruz14.tutorialauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080703709055-bq9lucpdqaepnfdl4m0ncbtp4l5tokbl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB40ov8DUxRjRGlKQSe3tuhxUyBH6IbqYA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

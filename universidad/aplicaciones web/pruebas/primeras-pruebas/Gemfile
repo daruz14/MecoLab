@@ -26,6 +26,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'passenger'
 #passenger start -p 3000
 
+gem 'gcm'
+
 gem 'responders', '~> 2.0'
 #gem 'thin'
 # Use ActiveModel has_secure_password
