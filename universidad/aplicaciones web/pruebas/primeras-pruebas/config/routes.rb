@@ -2,12 +2,13 @@ Rails.application.routes.draw do
   resources :users
   resources :messages
   resources :contactos
+  resources :texts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'contactos#index'
-   post 'contactos/new' => 'contactos#new'
+   root 'users#index'
+   post 'users/new' => 'users#new'
 
 
    # API
@@ -16,8 +17,10 @@ namespace :api do
         resources :contactos, only: [:index, :show, :update, :destroy, :create]
         resources :messages, only: [:index, :show, :update, :destroy, :create]
         resources :users, only: [:index, :show, :update, :destroy, :create]
+        resources :texts, only: [:index, :create]
     end
 end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

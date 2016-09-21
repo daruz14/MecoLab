@@ -12,16 +12,21 @@ class Api::V1::UsersController < ApplicationController
 
     # POST /users.json
     def create
-      # Ahora al crear un nuevo contacto se revisa si ya existe, en dicho caso se retorna su id correspondiente
-      # Este id sera utilizado como token para las conversaciones
-      # Si el contacto no existe se crea y se retorna el id correspondiente para luego ser usado
+      #When intent create a new user, first we will review if it exist
+      #If the user is created or exists , then it will return its ID
+      # the id will be used for edit the user in case update de token
       if User.exists?(user_params)
+        #Here is revised if there
         return render json: User.where(user_params).first.id
       end
       @user = User.new(user_params)
       if @user.save
+        #If the user was created , then the id is returned
+        #and delivered 201 status success
         render json: @user.id, status: 201
       else
+        #If I were creating failure , an error message and
+        #status 500, where there was a server error is returned
         render json: { message: 'Falló creacion del contacto', params: user_params }, status: 500
       end
     end

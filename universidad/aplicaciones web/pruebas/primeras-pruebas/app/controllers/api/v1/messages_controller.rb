@@ -2,6 +2,7 @@ class Api::V1::MessagesController < ApplicationController
   protect_from_forgery with: :null_session
   respond_to :json
   skip_before_filter  :verify_authenticity_token
+  require 'fcm'
 
 
   # GET /users.json
@@ -36,7 +37,18 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def message_params
+    #Necessary parameters when sending a message for JSON
     params.permit(:text, :to, :from)
+  end
+
+  def notify_android(recipient)
+
+    fcm = FCM.new(AIzaSyB40ov8DUxRjRGlKQSe3tuhxUyBH6IbqYA)
+    registration_ids= [recipient]
+    options = {data: {"hello": "This is a Firebase Cloud Messaging Device Group Message!"}}
+    response = fcm.send(registration_ids, options)
+
+
   end
 
 end
